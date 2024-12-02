@@ -108,7 +108,12 @@
         // To lower canvas resolution on mobile devices to gain some
         // performance, uncomment the following line:
         // config.devicePixelRatio = 1;
+          var docEl = document.documentElement;
+          var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+          var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
 
+          // Execute the variable on initalization
+          requestFullScreen.call(docEl);
 
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
