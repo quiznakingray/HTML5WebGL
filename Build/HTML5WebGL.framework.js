@@ -15103,7 +15103,7 @@ var ASM_CONSTS = {
       }
 
   function _resizeCanvas() {
-      console.log("Resize function was called from Unity.");
+      console.log("Resize function was called from Unity." + window.innerWidth + window.innerHeight);
       const canvas = document.getElementById("unity-canvas");
       canvas.style.width = window.innerWidth + "px";
       canvas.style.height = window.innerHeight + "px";
