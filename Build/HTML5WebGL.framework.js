@@ -15095,9 +15095,9 @@ var ASM_CONSTS = {
           const canvas = document.getElementById("unity-canvas");
           if (canvas.requestFullscreen) {
               canvas.requestFullscreen();
-          } else if (canvas.webkitRequestFullscreen) {
+          } else if (canvas.webkitRequestFullscreen) { // Safari compatibility
               canvas.webkitRequestFullscreen();
-          } else if (canvas.msRequestFullscreen) {
+          } else if (canvas.msRequestFullscreen) { // Older Edge compatibility
               canvas.msRequestFullscreen();
           }
       }
