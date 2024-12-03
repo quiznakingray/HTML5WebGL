@@ -129,7 +129,7 @@
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas(); // Initial resize
 
-        canvas.addEventListener('click', () => {
+        container.addEventListener('click', () => {
             if (canvas.requestFullscreen) {
                 canvas.requestFullscreen();
             } else if (canvas.webkitRequestFullscreen) { // Safari compatibility
