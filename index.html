@@ -1,31 +1,12 @@
 <!DOCTYPE html>
 <html lang="en-us">
-<head>
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Unity WebGL Player | FYP HTML5</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
-    <style>
-        @media (orientation: portrait) {
-            body::before {
-                content: "Please rotate your device to landscape mode.";
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100vw;
-                height: 100vh;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                font-size: 24px;
-                background: #000;
-                color: #fff;
-                z-index: 9999;
-            }
-        }
-    </style>
-</head>
+  </head>
   <body>
     <div id="unity-container" class="unity-desktop">
       <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
@@ -84,7 +65,7 @@
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "FYP HTML5",
-        productVersion: "0.1.0",
+        productVersion: "0.0.1",
         showBanner: unityShowBanner,
       };
 
@@ -108,13 +89,25 @@
         // To lower canvas resolution on mobile devices to gain some
         // performance, uncomment the following line:
         // config.devicePixelRatio = 1;
-          var docEl = document.documentElement;
-          var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
-          var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
 
-          // Execute the variable on initalization
-          requestFullScreen.call(docEl);
+          function resizeCanvas() {
+              canvas.style.width = window.innerWidth + "px";
+              canvas.style.height = window.innerHeight + "px";
+              canvas.width = window.innerWidth;
+              canvas.height = window.innerHeight;
+          }
 
+          window.addEventListener('resize', resizeCanvas);
+          resizeCanvas(); // Initial resize
+          canvas.addEventListener('click', () => {
+              if (canvas.requestFullscreen) {
+                  canvas.requestFullscreen();
+              } else if (canvas.webkitRequestFullscreen) { // Safari compatibility
+                  canvas.webkitRequestFullscreen();
+              } else if (canvas.msRequestFullscreen) { // Older Edge compatibility
+                  canvas.msRequestFullscreen();
+              }
+          });
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
 
@@ -139,14 +132,7 @@
               });
             };
 
-        document.body.appendChild(script);
-
-        window.addEventListener("load", function () {
-            setTimeout(function () {
-                // This hides the address bar:
-                document.getElementById("unity-container").webkitRequestFullscreen();
-            }, 0);
-        });
+      document.body.appendChild(script);
 
     </script>
   </body>
