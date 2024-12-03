@@ -115,7 +115,18 @@
               });
             };
 
-      document.body.appendChild(script);
+        document.body.appendChild(script);
+
+        function resizeCanvas() {
+            canvas.style.width = window.innerWidth + "px";
+            canvas.style.height = window.innerHeight + "px";
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            console.log("resized");
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas(); // Initial resize
 
     </script>
   </body>
