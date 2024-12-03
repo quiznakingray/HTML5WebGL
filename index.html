@@ -89,7 +89,24 @@
         // To lower canvas resolution on mobile devices to gain some
         // performance, uncomment the following line:
         // config.devicePixelRatio = 1;
+          function resizeCanvas() {
+              canvas.style.width = window.innerWidth + "px";
+              canvas.style.height = window.innerHeight + "px";
+              canvas.width = window.innerWidth;
+              canvas.height = window.innerHeight;
+          }
 
+          window.addEventListener('resize', resizeCanvas);
+          resizeCanvas(); // Initial resize
+          canvas.addEventListener('click', () => {
+              if (canvas.requestFullscreen) {
+                  canvas.requestFullscreen();
+              } else if (canvas.webkitRequestFullscreen) { // Safari compatibility
+                  canvas.webkitRequestFullscreen();
+              } else if (canvas.msRequestFullscreen) { // Older Edge compatibility
+                  canvas.msRequestFullscreen();
+              }
+          });
 
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
@@ -117,15 +134,7 @@
 
         document.body.appendChild(script);
 
-        function resizeCanvas() {
-            canvas.style.width = window.innerWidth + "px";
-            canvas.style.height = window.innerHeight + "px";
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
 
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas(); 
 
     </script>
   </body>
