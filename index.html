@@ -100,13 +100,6 @@
 
       loadingBar.style.display = "block";
 
-
-        function resizeCanvas() {
-            canvas.style.width = window.innerWidth + "px";
-            canvas.style.height = window.innerHeight + "px";
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
       var script = document.createElement("script");
       script.src = loaderUrl;
       script.onload = () => {
@@ -116,15 +109,7 @@
                 loadingBar.style.display = "none";
                 fullscreenButton.onclick = () => {
                     unityInstance.SetFullscreen(1);
-                    window.addEventListener('resize', resizeCanvas);
-                    resizeCanvas(); // Initial resize
-                    if (canvas.requestFullscreen) {
-                        canvas.requestFullscreen();
-                    } else if (canvas.webkitRequestFullscreen) { // Safari compatibility
-                        canvas.webkitRequestFullscreen();
-                    } else if (canvas.msRequestFullscreen) { // Older Edge compatibility
-                        canvas.msRequestFullscreen();
-                    }
+
                 };
               }).catch((message) => {
                 alert(message);
@@ -132,6 +117,29 @@
             };
 
         document.body.appendChild(script);
+
+
+        function resizeCanvas() {
+            canvas.style.width = window.innerWidth + "px";
+            canvas.style.height = window.innerHeight + "px";
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        function Fullscreen() {
+            if (canvas.requestFullscreen) {
+                canvas.requestFullscreen();
+            } else if (canvas.webkitRequestFullscreen) { // Safari compatibility
+                canvas.webkitRequestFullscreen();
+            } else if (canvas.msRequestFullscreen) { // Older Edge compatibility
+                canvas.msRequestFullscreen();
+            }
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas(); // Initial resize
+        Fullscreen();
+
+
 
     </script>
   </body>
