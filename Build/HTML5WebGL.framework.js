@@ -1994,13 +1994,13 @@ var tempI64;
 // === Body ===
 
 var ASM_CONSTS = {
-  5082096: function() {return Module.webglContextAttributes.premultipliedAlpha;},  
- 5082157: function() {return Module.webglContextAttributes.preserveDrawingBuffer;},  
- 5082221: function() {return Module.webglContextAttributes.powerPreference;},  
- 5082279: function() {Module['emscripten_get_now_backup'] = performance.now;},  
- 5082334: function($0) {performance.now = function() { return $0; };},  
- 5082382: function($0) {performance.now = function() { return $0; };},  
- 5082430: function() {performance.now = Module['emscripten_get_now_backup'];}
+  5082112: function() {return Module.webglContextAttributes.premultipliedAlpha;},  
+ 5082173: function() {return Module.webglContextAttributes.preserveDrawingBuffer;},  
+ 5082237: function() {return Module.webglContextAttributes.powerPreference;},  
+ 5082295: function() {Module['emscripten_get_now_backup'] = performance.now;},  
+ 5082350: function($0) {performance.now = function() { return $0; };},  
+ 5082398: function($0) {performance.now = function() { return $0; };},  
+ 5082446: function() {performance.now = Module['emscripten_get_now_backup'];}
 };
 
 
@@ -15102,6 +15102,15 @@ var ASM_CONSTS = {
           }
       }
 
+  function _resizeCanvas() {
+      console.log("Resize function was called from Unity.");
+      const canvas = document.getElementById("unity-canvas");
+      canvas.style.width = window.innerWidth + "px";
+      canvas.style.height = window.innerHeight + "px";
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
   function _setTempRet0(val) {
       setTempRet0(val);
     }
@@ -16123,6 +16132,7 @@ var asmLibraryArg = {
   "invoke_vjjjiiii": invoke_vjjjiiii,
   "llvm_eh_typeid_for": _llvm_eh_typeid_for,
   "requestFullscreen": _requestFullscreen,
+  "resizeCanvas": _resizeCanvas,
   "setTempRet0": _setTempRet0,
   "strftime": _strftime
 };
