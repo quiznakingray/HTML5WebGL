@@ -125,7 +125,11 @@
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         }
-        function Fullscreen() {
+
+/*        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas(); // Initial resize
+
+        canvas.addEventListener('click', () => {
             if (canvas.requestFullscreen) {
                 canvas.requestFullscreen();
             } else if (canvas.webkitRequestFullscreen) { // Safari compatibility
@@ -133,12 +137,7 @@
             } else if (canvas.msRequestFullscreen) { // Older Edge compatibility
                 canvas.msRequestFullscreen();
             }
-        }
-
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas(); // Initial resize
-        Fullscreen();
-
+        });*/
 
 
     </script>

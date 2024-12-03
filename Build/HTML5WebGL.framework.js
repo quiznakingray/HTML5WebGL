@@ -15090,6 +15090,18 @@ var ASM_CONSTS = {
       return type;
     }
 
+  function _requestFullscreen() {
+          console.log("Fullscreen function was called from Unity.");
+          const canvas = document.getElementById("unity-canvas");
+          if (canvas.requestFullscreen) {
+              canvas.requestFullscreen();
+          } else if (canvas.webkitRequestFullscreen) {
+              canvas.webkitRequestFullscreen();
+          } else if (canvas.msRequestFullscreen) {
+              canvas.msRequestFullscreen();
+          }
+      }
+
   function _setTempRet0(val) {
       setTempRet0(val);
     }
@@ -16110,6 +16122,7 @@ var asmLibraryArg = {
   "invoke_vjiiiii": invoke_vjiiiii,
   "invoke_vjjjiiii": invoke_vjjjiiii,
   "llvm_eh_typeid_for": _llvm_eh_typeid_for,
+  "requestFullscreen": _requestFullscreen,
   "setTempRet0": _setTempRet0,
   "strftime": _strftime
 };
