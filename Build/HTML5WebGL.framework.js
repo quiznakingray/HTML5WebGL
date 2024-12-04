@@ -15110,6 +15110,7 @@ var ASM_CONSTS = {
       canvas.style.height = window.innerHeight + "px";
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+      window.alert("resized");
     }
 
   function _setTempRet0(val) {
