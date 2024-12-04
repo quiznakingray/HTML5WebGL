@@ -15100,7 +15100,7 @@ var ASM_CONSTS = {
           } else if (canvas.msRequestFullscreen) { // Older Edge compatibility
               canvas.msRequestFullscreen();
           }
-          window.alert("fullscreen");
+          //window.alert("fullscreen");
       }
 
   function _resizeCanvas() {
